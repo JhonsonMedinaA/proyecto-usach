@@ -1,0 +1,148 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Header */
+.header {
+  background-color: #003f46;
+  color: #fff;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+
+.header__logo {
+  width: 120px;
+}
+
+.header__nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.header__link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.header__buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.header__button {
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.header__button--dark {
+  background-color: #000;
+  color: #fff;
+}
+
+.header__button--yellow {
+  background-color: #ffd700;
+  color: #333;
+}
+
+/* Hero Section */
+.hero {
+  background-color: #f4f4f4;
+  padding: 20px;
+  text-align: center;
+}
+
+.hero__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero__title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.hero__description {
+  margin-bottom: 20px;
+}
+
+.hero__button {
+  background-color: #003f46;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.hero__image img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* Process Section */
+.process {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.process__title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.process__steps {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.process__step {
+  max-width: 200px;
+  text-align: center;
+}
+
+.process__icon {
+  font-size: 48px;
+  color: #ffd700;
+}
+
+.process__description {
+  margin-top: 10px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .header__container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero__container {
+    flex-direction: column;
+  }
+
+  .process__steps {
+    flex-direction: column;
+  }
+}
