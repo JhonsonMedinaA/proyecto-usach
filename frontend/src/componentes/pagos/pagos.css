@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    color: #009b3a; /* Color principal de Servipag */
+}
+
+.btn-primary {
+    background-color: #009b3a;
+    border: none;
+}
+
+.btn-success {
+    background-color: #f9a825; /* Color de acento de Servipag */
+    border: none;
+}
+
+#total-pagar {
+    color: #d32f2f;
+    font-weight: bold;
+
+}
