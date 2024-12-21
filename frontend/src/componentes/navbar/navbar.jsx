@@ -21,9 +21,11 @@ function Navbar() {
         <li className="nav-item">
           <a className="nav-link color" href="#">Servipag Empresas</a>
         </li>
+        <Link to="/main1">
         <li className="nav-item ">
-          <a className="nav-link color" href="#">Sucursales y Yo PAG</a>
+          <a className="nav-link color" href="#">Comentarios</a>
         </li>
+        </Link>
         <Link to="/pagos">
         <li className="nav-item">
         <a  className="nav-link bg-warning">Mi Servipag</a>
