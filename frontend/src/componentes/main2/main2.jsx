@@ -2,17 +2,20 @@ import React from "react";
 import Servi1 from '../../assets/img2/servi1.png';
 import './main2.css';
  import { Link } from "react-router-dom";
-
+import Navbar from "../navbar/navbar";
+import Footer from "../footer/footer";
  
 function Main2 (){
 
     return(
 
 <>
+
+<Navbar />
 <header className="fondoCompleto h100">
-<div className="card mb-3 p-5  fondo" >
-<div className="card mb-3 p-5 mt-5 bg-warning" >
-<div className="card mb-3 p-5 mt-5" >
+<div className="card p-5  fondo" >
+<div className="card p-5 mt-5 bg-warning" >
+<div className="card p-5 mt-5" >
   <div className="row g-0 ">
     <div className="col-md-4">
     <img src={Servi1} alt=""  />
@@ -40,6 +43,8 @@ function Main2 (){
 </div>
 
 </header>
+
+<Footer />
 </>
 
     )

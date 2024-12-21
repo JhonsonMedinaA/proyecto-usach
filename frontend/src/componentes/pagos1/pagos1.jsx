@@ -21,7 +21,7 @@ function Pagos1 (){
         <h5 className="card-title text-center">GRACIAS POR TU PAGO</h5>
         <h5 className="card-title text-center">FELIZ NAVIDAD</h5>
        
-        <Link to="/main" className="footer-link">
+        <Link to="/" className="footer-link">
         <div className="text-center">
         <button type="button" className="btn btn-warning mt-4 p-2 ">
          Regresar

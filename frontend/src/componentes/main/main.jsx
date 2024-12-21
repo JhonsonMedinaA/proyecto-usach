@@ -3,6 +3,8 @@ import * as XLSX from 'xlsx';
 import './main.css';
 
 import { Link } from "react-router-dom";
+import Navbar from "../navbar/navbar";
+import Footer from "../footer/footer";
 
 function Main() {
     const [records, setRecords] = useState([]);
@@ -76,6 +78,9 @@ function Main() {
 
     return (
         <>
+
+        <Navbar />
+
         <div className="main">
         <div className="container ">
             
@@ -133,7 +138,7 @@ function Main() {
             
         </div>
         
-
+<Footer />
         </>
     );
 }
