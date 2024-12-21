@@ -55,7 +55,7 @@ function Registro() {
       password,
     };
 
-    fetch('http://localhost:3000/api/v1/crear', {
+    fetch('http://localhost:8080/api/v1/crear', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

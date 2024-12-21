@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, NavLink } from 'react-router-dom';
 import ErrorPage from '../../error-page.jsx';
 import Registro from '../registro/registro.jsx';
 import Login from '../login/login.jsx';
@@ -9,12 +9,39 @@ import Main1 from '../main1/main1.jsx';
 import Main2 from '../main2/main2.jsx';
 import Pagos from '../pagos/pagos.jsx';
 import Pagos1 from '../pagos1/pagos1.jsx';
+import Navbar from '../navbar/navbar.jsx';
+import Section from '../section/section.jsx';
+import Footer from '../footer/footer.jsx';
+import Root from '../../root.jsx';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/app',
     element: <App />,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: '/',
+    element: <Root/>,
+    
+  },
+
+  {
+    path: '/navbar',
+    element: <Navbar/>,
+    
+  },
+
+  {
+    path: '/footer',
+    element: <Footer/>,
+   
+  },
+
+  {
+    path: '/section',
+    element: <Section/>,
+   
   },
   {
     path: '/registro',

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import './main1.css'
+import Navbar from "../navbar/navbar";
+import Footer from "../footer/footer";
 
 function Main1() {
     const [name, setName] = useState("");
@@ -49,8 +51,11 @@ function Main1() {
     };
 
     return (
+
+<>
+        <Navbar />
         <div className="registro">
-        <div className="container mt-5">
+        <div className="container ">
             <div className="form-container">
                 <h2 className="text-center bg-warning p-4">!Tiene dudas o algún problema con el pago comentenos por acá!</h2>
                 <form id="registerForm" onSubmit={handleSubmit}>
@@ -110,12 +115,15 @@ function Main1() {
                     <a className="btn btn-warning ms-2">Ver Comentarios</a>
                    </Link>
                   
+                  
                     </div>
                 </form>
             </div>
         </div>
-
+        <Footer />
         </div>
+         
+        </>
     );
 }
 

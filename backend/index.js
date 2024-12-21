@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 app.use("*", (req, res) => res.status(404).send("404 - ruta no encontrada"));
 
 // Inicio del servidor
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Server conectado y corriendo en el puerto ${port}`));
 
 module.exports = app;
