@@ -42,3 +42,18 @@
     color: white;
     
 }
+
+.cambio{
+  text-decoration: none;
+}
+
+/* navbar.css */
+.nav-link {
+  text-decoration: none !important; /* Eliminar subrayado */
+  color: white !important; /* Establecer el color de las letras en blanco */
+}
+
+/* Opcional: Cambiar color de los enlaces al pasar el ratón */
+.nav-link:hover {
+  color: #cccccc; /* Cambia este color al que desees para el hover */
+}

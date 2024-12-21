@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as XLSX from 'xlsx';
 import './main.css';
-
 import { Link } from "react-router-dom";
 import Navbar from "../navbar/navbar";
 import Footer from "../footer/footer";
@@ -78,67 +77,58 @@ function Main() {
 
     return (
         <>
-
-        <Navbar />
-
-        <div className="main">
-        <div className="container ">
-            
-            <h2 className="text-center bg-warning p-4">Registros</h2>
-           
-            <input
-                type="text"
-                id="search"
-                className="form-control mb-3"
-                placeholder="Buscar Usuario"
-                onChange={handleSearch}
-            />
-            <div id="records">
-                {currentRecords.length === 0 ? (
-                    <p>No hay registros.</p>
-                ) : (
-                    <ul className="list-group">
-                        {currentRecords.map((record, index) => (
-                            <li key={index} className="list-group-item">
-                                <strong>{record.name} {record.lastName}</strong> ({record.email}) dijo:<br />
-                                {record.comentarios}<br />
-                                <small className="text-muted">en {record.timestamp}</small>
-                            </li>
+            <Navbar />
+            <div className="main">
+                <div className="container">
+                    <h2 className="text-center bg-warning p-4">Registros</h2>
+                    <input
+                        type="text"
+                        id="search"
+                        className="form-control mb-3"
+                        placeholder="Buscar Usuario"
+                        onChange={handleSearch}
+                    />
+                    <div id="records">
+                        {currentRecords.length === 0 ? (
+                            <p>No hay registros.</p>
+                        ) : (
+                            <ul className="list-group">
+                                {currentRecords.map((record, index) => (
+                                    <li key={index} className="list-group-item">
+                                        <strong>{record.name} {record.lastName}</strong> ({record.email}) dijo:<br />
+                                        {record.comentarios}<br />
+                                        <small className="text-muted">en {record.timestamp}</small>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                    <div id="pagination" className="pagination mt-3">
+                        {pageNumbers.map(number => (
+                            <button
+                                key={number}
+                                onClick={() => paginate(number)}
+                                className={`btn btn-${currentPage === number ? 'primary' : 'secondary'} mx-1`}
+                            >
+                                {number}
+                            </button>
                         ))}
-                    </ul>
-                )}
-            </div>
-            <div id="pagination" className="pagination mt-3">
-                {pageNumbers.map(number => (
-                    <button
-                        key={number}
-                        onClick={() => paginate(number)}
-                        className={`btn btn-${currentPage === number ? 'primary' : 'secondary'} mx-1`}
-                    >
-                        {number}
-                    </button>
-                ))}
-                
-            </div>
-            <div className="text-center">
-            <button type="button" id="exportExcel" className="btn btn-warning mt-4 p-2 " onClick={handleExportExcel}>
-                Exportar a Excel
-            </button>
-            </div>
-                <Link to="/main1" className="footer-link">
-                <div className="text-center">
-            <button type="button" className="btn btn-warning mt-4 p-2 regresar mb-2">
-                Regresar
-              </button>
-               </div>
+                    </div>
+                    <div className="text-center">
+                        <button type="button" id="exportExcel" className="btn btn-warning mt-4 p-2" onClick={handleExportExcel}>
+                            Exportar a Excel
+                        </button>
+                    </div>
+                    <Link to="/main1" className="footer-link">
+                        <div className="text-center">
+                            <button type="button" className="btn btn-warning mt-4 p-2 regresar mb-2">
+                                Regresar
+                            </button>
+                        </div>
                     </Link>
-
-            
+                </div>
             </div>
-            
-        </div>
-        
-<Footer />
+            <Footer />
         </>
     );
 }

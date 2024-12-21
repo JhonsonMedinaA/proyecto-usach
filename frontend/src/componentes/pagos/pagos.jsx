@@ -70,8 +70,8 @@ function Pagos() {
 <div className="col-md-6 mb-3" key={num}>
     <div className="card">
     <img src={Img1} className="card-img-top" alt={`Card ${num}`} />
-     <div className="card-body">
-      <h5 className="card-title">Card {num}</h5>
+     <div className="card-body text-center">
+      <h5 className="card-title">Deudas Activas {num}</h5>
         <button className="btn btn-primary btn-monto" data-card={num}>Agregar Monto</button>
     <div className={`monto-container-${num} mt-3`} style={{ display: 'none' }}>
      <input type="number" className="form-control monto-input" data-card={num} placeholder="Ingrese el monto" />

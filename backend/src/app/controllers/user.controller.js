@@ -2,21 +2,22 @@ const User = require('../models/use.models');
 const bcrypt = require('bcrypt');
 const { generarJWT } = require('../services/generar-jwt');
 
-// gestionar la creación de un usuario
+// Función para crear un usuario
 const crearUser = async (req, res) => {
   const { name, lastName, direction, email, password } = req.body;
 
   if (!name || !lastName || !email || !password) {
-    return res.status(404).json({
+    return res.status(400).json({
       msg: 'Todos los campos son requeridos',
-      status: 404,
+      status: 400,
     });
   }
+
   try {
     const salt = bcrypt.genSaltSync();
     const hashedPassword = bcrypt.hashSync(password, salt);
 
-    await User.create({
+    const newUser = new User({
       name,
       lastName,
       direction,
@@ -24,12 +25,14 @@ const crearUser = async (req, res) => {
       password: hashedPassword,
     });
 
+    await newUser.save();
+
     res.status(201).json({
       msg: 'Usuario creado correctamente',
       status: 201,
     });
   } catch (error) {
-    console.log(error);
+    console.error('Error al crear el usuario:', error);
     res.status(500).json({
       msg: 'Error al crear el usuario',
       status: 500,
@@ -37,7 +40,7 @@ const crearUser = async (req, res) => {
   }
 };
 
-// gestionar el login de un usuario
+// Función para iniciar sesión de un usuario
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
@@ -54,13 +57,6 @@ const loginUser = async (req, res) => {
       return res.status(404).json({
         msg: `Usuario con email ${email} no encontrado`,
         status: 404,
-      });
-    }
-
-    if (findUser.status !== 'active') {
-      return res.status(403).json({
-        msg: `Usuario con email ${email} no está activo en el sistema`,
-        status: 403,
       });
     }
 
@@ -86,7 +82,7 @@ const loginUser = async (req, res) => {
       token,
     });
   } catch (error) {
-    console.log(error);
+    console.error('Error al loguear el usuario:', error);
     res.status(500).json({
       msg: 'Error al loguear el usuario',
       status: 500,
@@ -94,6 +90,7 @@ const loginUser = async (req, res) => {
   }
 };
 
+// Función para obtener un usuario por ID
 const getUserById = async (req, res) => {
   const { iduser } = req.params;
 
@@ -131,7 +128,7 @@ const getUserById = async (req, res) => {
       status: 200,
     });
   } catch (error) {
-    console.log(error);
+    console.error('Error al buscar el usuario:', error);
     res.status(500).json({
       msg: 'Error al buscar el usuario',
       status: 500,
@@ -139,6 +136,7 @@ const getUserById = async (req, res) => {
   }
 };
 
+// Función para actualizar el estado de un usuario por ID
 const updateStatusUserById = async (req, res) => {
   const { iduser } = req.params;
 
@@ -178,7 +176,7 @@ const updateStatusUserById = async (req, res) => {
       status: 200,
     });
   } catch (error) {
-    console.log(error);
+    console.error('Error al actualizar el usuario:', error);
     res.status(500).json({
       msg: 'Error al actualizar el usuario',
       status: 500,
@@ -186,6 +184,7 @@ const updateStatusUserById = async (req, res) => {
   }
 };
 
+// Función para actualizar un usuario por ID
 const updateUserById = async (req, res) => {
   const { iduser } = req.params;
   const { name, lastName, email } = req.body;
@@ -228,7 +227,7 @@ const updateUserById = async (req, res) => {
       status: 200,
     });
   } catch (error) {
-    console.log(error);
+    console.error('Error al actualizar el usuario:', error);
     res.status(500).json({
       msg: 'Error al actualizar el usuario',
       status: 500,

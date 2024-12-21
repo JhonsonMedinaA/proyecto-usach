@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './main1.css'
 import Navbar from "../navbar/navbar";
 import Footer from "../footer/footer";
@@ -8,8 +8,9 @@ function Main1() {
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
-    const[comentarios, setComentarios] = useState("")
-    
+    const [comentarios, setComentarios] = useState("");
+    const navigate = useNavigate();
+
     function getCurrentDateTime() {
         const now = new Date();
         const date = now.toLocaleDateString();
@@ -22,7 +23,6 @@ function Main1() {
         return JSON.parse(localStorage.getItem('records')) || [];
     }
 
-    
     function saveRecords(records) {
         localStorage.setItem('records', JSON.stringify(records));
     }
@@ -48,81 +48,78 @@ function Main1() {
         setLastName("");
         setEmail("");
         setComentarios("");
+
+        // Navigate to confirmation page
+        navigate("/main2");
     };
 
     return (
-
-<>
-        <Navbar />
-        <div className="registro">
-        <div className="container ">
-            <div className="form-container">
-                <h2 className="text-center bg-warning p-4">!Tiene dudas o algún problema con el pago comentenos por acá!</h2>
-                <form id="registerForm" onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <label htmlFor="name" className="form-label">Nombre</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="name"
-                            placeholder="Ingresa tu nombre"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            required
-                        />
+        <>
+            <Navbar />
+            <div className="registro">
+                <div className="container">
+                    <div className="form-container">
+                        <h2 className="text-center bg-warning p-4">¡Tiene dudas o algún problema con el pago? Coméntenos por acá!</h2>
+                        <form id="registerForm" onSubmit={handleSubmit}>
+                            <div className="mb-3">
+                                <label htmlFor="name" className="form-label">Nombre</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="name"
+                                    placeholder="Ingresa tu nombre"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="lastName" className="form-label">Apellido</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="lastName"
+                                    placeholder="Ingresa tu apellido"
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="email" className="form-label">Correo</label>
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    id="email"
+                                    placeholder="Ingresa tu correo"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="comentarios" className="form-label">Comentarios</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="comentarios"
+                                    value={comentarios}
+                                    onChange={(e) => setComentarios(e.target.value)}
+                                    placeholder="Escribe tu comentario"
+                                    required
+                                />
+                            </div>
+                            <div className="text-center">
+                                <button type="submit" className="btn btn-warning">Registrar</button>
+                                <Link to="/main" className="footer-link ms-2">
+                                    <button type="button" className="btn btn-warning">Ver Comentarios</button>
+                                </Link>
+                            </div>
+                        </form>
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="lastName" className="form-label">Apellido</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="lastName"
-                            placeholder="Ingresa tu apellido"
-                            value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="email" className="form-label">Correo</label>
-                        <input
-                            type="email"
-                            className="form-control"
-                            id="email"
-                            placeholder="Ingresa tu correo"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                      </div>
-                  <div className="mb-3">
-                  <label htmlFor="comentarios" className="form-label">Comentarios</label>
-                 <input
-                    type="text"
-                    className="form-control"
-                    id="commentarios"
-                    value={comentarios}
-                    onChange={(e) => setComentarios(e.target.value)}
-                    placeholder="Escribe tu comentario"
-                    required
-                />
-                    </div>
-                    <div className="text-center">
-                    <Link to="/main2" className="footer-link">
-                    <button type="submit" className="btn btn-warning">Registrar</button>
-                    </Link>
-                    <Link to="/main" className="footer-link">
-                    <a className="btn btn-warning ms-2">Ver Comentarios</a>
-                   </Link>
-                  
-                  
-                    </div>
-                </form>
+                </div>
+                <Footer />
             </div>
-        </div>
-        <Footer />
-        </div>
-         
         </>
     );
 }

@@ -8,7 +8,6 @@ function Login() {
 
   const [email, setEmail] = useState('');
   const [userLoggeado, setUserLoggeado] = useState({});
-  const [userLocal, setUserLocal] = useState({});
   const [userNavigate, setUserNavigate] = useState(false);
 
   const handleEmail = (e) => {
@@ -28,7 +27,7 @@ function Login() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(user), // Debemos instalar npm install cors en el backend
+      body: JSON.stringify(user),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -41,21 +40,10 @@ function Login() {
       });
   };
 
-  if (userLoggeado.status === 200) {
-    setTimeout(() => {
-      setUserNavigate(true);
-    }, 3000);
-  }
-
   useEffect(() => {
     if (userLoggeado.status === 200) {
       localStorage.setItem('user', JSON.stringify(userLoggeado.data));
-    }
-  }, [userLoggeado]);
-
-  useEffect(() => {
-    if (localStorage.getItem('user') !== null) {
-      setUserLocal(JSON.parse(localStorage.getItem('user')));
+      setUserNavigate(true);
     }
   }, [userLoggeado]);
 

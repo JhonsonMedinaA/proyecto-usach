@@ -74,7 +74,7 @@ function Registro() {
         console.log(data);
         if (data.msg === 'Usuario creado correctamente') {
           alert('Registro exitoso');
-          navigate('/login');
+          navigate('/');
         }
       })
       .catch((error) => {

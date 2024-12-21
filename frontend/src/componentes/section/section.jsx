@@ -4,6 +4,7 @@ import Img3 from '../../assets/img2/img3.webp';
 import Img4 from '../../assets/img2/img4.avif';
 import Img5 from '../../assets/img2/img5.webp';
 import Img6 from '../../assets/img2/img9.jpeg';
+import { Link } from 'react-router-dom';
 
 
 import './section.css';
@@ -39,7 +40,9 @@ function Section() {
               <div className="hero__text ">
                 <h1 className="hero__title ">Paga tus cuentas</h1>
                 <p className="hero__description">De forma directa, fácil y sencilla.</p>
+                <Link to="/pagos">
                 <button className="btn btn-primary ">Pago rápido</button>
+                </Link>
               </div>
             </div>
            
